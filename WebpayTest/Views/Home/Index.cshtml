@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Test Transbank";
+}
+
+<style>
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<img src="~/Content/webpay.png" class="card-img-top" alt="Logo_Webpay">
+<div class="row">
+    <div class="col-xs-12">
+        <h5 class="card-title">Información de la Transacción</h5>
+
+        <p><b>Monto: </b><span>@ViewBag.Amount</span></p>
+        <p><b>Buy Order: </b><span>@ViewBag.BuyOrder</span></p>
+        <p><b>Buy Order: </b><span>@ViewBag.SessionId</span></p>
+        <p><b>Response Url : </b><span>@ViewBag.ReponseURL</span></p>
+        <p><b>Response Token: </b><span>@ViewBag.ResponseToken</span></p>
+
+        <form method="post" action="@ViewBag.ReponseURL">
+            <input type="hidden" name="token_ws" value="@ViewBag.ResponseToken" />
+            <input type="submit" value="Ir a pagar" class="btn-lg btn-primary" />
+        </form>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="card">
+            <h3>Tarjetas de prueba en Ambiente de integración</h3>
+            <p>
+                Para las transacciones Webpay en este ambiente se deben usar estas
+                tarjetas:
+            </p>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Tipo de tarjeta</th>
+                        <th>Detalle</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>VISA</td>
+                        <td>4051 8856 0044 6623<br>CVV 123<br>cualquier fecha de expiración</td>
+                        <td>Genera transacciones <strong>aprobadas</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td>AMEX</td>
+                        <td>3700 0000 0002 032<br> CVV 1234<br>cualquier fecha de expiración</td>
+                        <td>Genera transacciones <strong>aprobadas</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td>MASTERCARD</td>
+                        <td>5186 0595 5959 0568<br> CVV 123<br>cualquier fecha de expiración</td>
+                        <td>Genera transacciones <strong>rechazadas</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td>Redcompra</td>
+                        <td>4051 8842 3993 7763</td>
+                        <td>Genera transacciones aprobadas (para operaciones que permiten débito Redcompra y prepago)</td>
+                    </tr>
+                    <tr>
+                        <td>Redcompra</td>
+                        <td>4511 3466 6003 7060</td>
+                        <td>Genera transacciones aprobadas (para operaciones que permiten débito Redcompra y prepago)</td>
+                    </tr>
+                    <tr>
+                        <td>Redcompra</td>
+                        <td>5186 0085 4123 3829</td>
+                        <td>Genera transacciones rechazadas (para operaciones que permiten débito Redcompra y prepago)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br />
+            <p>
+                Cuando aparece un formulario de autenticación con RUT y clave, se debe
+                usar el RUT <strong>11.111.111-1</strong> y la clave <strong>123</strong>.
+            </p>
+        </div>
+    </div>
+</div>

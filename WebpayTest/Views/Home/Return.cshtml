@@ -1,0 +1,19 @@
+﻿<h2>@ViewBag.Title</h2>
+<h4>Transaction.Commit</h4>
+
+<h4>Response:</h4>
+<pre>
+<code>
+@ViewBag.Result.ToString()
+</code>
+</pre>
+
+@if (ViewBag.Result.ResponseCode == 0)
+{
+    <p>Transacción confirmada con éxito.</p>
+}
+else
+{
+    <p>Error al confirmar transacción.</p>
+}
+@Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "btn btn-primary" })
