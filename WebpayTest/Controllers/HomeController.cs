@@ -19,7 +19,14 @@ namespace WebpayTest.Controllers
             var buyOrder = new Random().Next(100000, 999999999).ToString();
             var sessionId = "sessionId";
 
-            string returnUrl = "http://localhost:50853/home/Return";
+            
+
+
+            String httpHost = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_HOST"].ToString();
+
+            string returnUrl = "http://"+httpHost+"/home/Return";
+
+            //string returnUrl = "http://localhost:50853/home/Return";
 
             var response = Transaction.Create(buyOrder, sessionId, amount, returnUrl);
             
